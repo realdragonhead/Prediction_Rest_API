@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>MainPage</title>
+	<style>
+		.main_header
+		{
+			margin-left: 20px;
+			margin-top: 20px;
+			margin-bottom: 0;
+		}
+		.sub_header
+		{
+			margin-left: 20px;
+			margin-top: 0;
+			margin-bottom: 0;
+			color: red;
+		}
+		.made_by
+		{
+			margin-left: 20px;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+		.inner_header
+		{
+			margin-top: 0;
+		}
+		.all_function
+		{
+			display: flex;
+			flex-wrap: wrap;
+			width: 805px;
+			height: 100%;
+		}
+		.main_list
+		{
+			width: 320px;
+			height: 220px;
+			margin: 10px;
+			padding: 20px;
+			border: 1px solid #ddd;
+			border-radius: 15px;
+			box-shadow: 5px 5px 20px #ddd;
+		}
+		.inner_description
+		{
+			width: 93%;
+			height: 111px;
+			padding: 10px;
+			border: 1px solid #ddd;
+			border-radius: 15px;
+		}
+		.sendtest_input
+		{
+			width: 200px;
+			border: 1px solid #ddd;
+		}
+		.inner_span
+		{
+			width: 100%;
+			height: 100%;
+		}
+		.right_position
+		{
+			display: block;
+			width: 100%;
+			text-align: right;
+		}
+		.inner_input
+		{
+			text-align: right;
+		}
+		.input_method
+		{
+			display: inline-block;
+		}
+		.btn
+		{
+			display: inline-block;
+			margin-bottom: 1px;
+		}
+		.first_padding
+		{
+			display: block;
+			width: 100%;
+			height: 22px;
+		}
+		.file_input
+		{
+			display: inline-block;
+			width: 180px;
+		}
+		.file_submit
+		{
+			display: inline-block;
+		}
+		a
+		{
+		}
+		p
+		{
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<h1 class="main_header">Rest API with Flask for Roboventure</h1>
+	<h3 class="sub_header">[ CAUTION : Upload file name should be in English ]</h3>
+	<h5 class="made_by">made by dragonhead</h5>
+	<div class="all_function">
+		<div class="main_list">
+			<h4 class="inner_header">01.Flask Working Test</h4>
+			<div class="inner_description">
+				<span class="inner_span">Working Test</span>
+			</div>
+			<div class="first_padding"></div>
+			<div class="first_padding"></div>
+			<a class="right_position" href="/test">start_test ></a>
+		</div>
+		<div class="main_list">
+			<h4 class="inner_header">02.Send Test</h4>
+			<div class="inner_description">
+				<span class="inner_span">Send test and receive signal from server</span>
+			</div>
+			<div class="first_padding"></div>
+			<div class="first_padding"></div>
+			<form class="inner_input" action="/testsend" method="post">
+				<p class="input_method">send test : <input type="text" name="send_test_word"></p>
+				<button class="btn" type="submit" value="text">submit</button>
+			</form>
+		</div>
+		<div class="main_list">
+			<h4 class="inner_header">03.Upload File</h4>
+			<div class="inner_description">
+				<span class="inner_span">API for saving file to root directory</span>
+			</div>
+			<div class="first_padding"></div>
+			<div class="first_padding"></div>
+			<form class="inner_input" action="/fileuploader" method="post" enctype="multipart/form-data">
+				<input class="file_input" type="file" name="file" />
+				<input class="file_submit" type="submit" value="submit" />
+			</form>
+		</div>
+		<div class="main_list">
+			<h4 class="inner_header">04.Make Image From URL</h4>
+			<div class="inner_description">
+				<span class="inner_span">Make Temporary image file from image URL link. Image file is named 'target.jpg' and saved on root directory. This is temporary file to use 5th API. Use again this API after making image file previous file will be overwrited.</span>
+			</div>
+			<div class="first_padding"></div>
+			<div class="first_padding"></div>
+			<form class="inner_input" action="/makeimage" method="post">
+				<p class="input_method">URL : <input type="text" name="url"></p>
+				<button class="btn" type="submit" value="text">submit</button>
+			</form>
+		</div>
+		<div class="main_list">
+			<h4 class="inner_header">05.Prediction</h4>
+			<div class="inner_description">
+				<span class="inner_span">Predict age and gender with prediction model. If there is temporary image file made by 4th API process then just click 'start predict', then prediction process will start with target.jpg. If you have Image file, then upload image link and click submit.</span>
+			</div>
+			<div class="first_padding"></div>
+			<form class="inner_input" action="/fileupload_and_predict" method="post" enctype="multipart/form-data">
+				<input class="file_input" type="file" name="file" />
+				<input class="file_submit" type="submit" value="submit" />
+			</form>
+			<a class="right_position" href="/predict">Start predict ></a>
+		</div>
+		<div class="main_list">
+			<h4 class="inner_header">06.All routine for file</h4>
+			<div class="inner_description">
+				<span class="innser_span">All routine make image from url, predict age and gender and saved to csv file. Before processing, please upload index.csv file about url link's index info. index.csv file should write like this "0, (index_number_of_link)"</span>
+			</div>
+			<div class="first_padding"></div>
+			<div class="first_padding"></div>
+			<form class="inner_input" action="/routine" method="post" enctype="multipart/form-data">
+				<input class="file_input" type="file" name="file" />
+				<input class="file_submit" type="submit" value="submit"/>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
